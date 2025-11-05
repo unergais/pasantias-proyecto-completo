@@ -1,5 +1,5 @@
 # Frontend Dockerfile - build with Node, serve with nginx
-FROM node:18-alpine AS build
+FROM node:20-bullseye-slim AS build
 
 WORKDIR /app
 
@@ -9,7 +9,7 @@ RUN npm install --legacy-peer-deps
 
 # Copy source and build
 COPY . .
-// Accept VITE build args and expose them as env so Vite picks them up during build
+# Accept VITE build args and expose them as env so Vite picks them up during build
 ARG VITE_SUPABASE_URL
 ARG VITE_SUPABASE_PUBLISHABLE_KEY
 ENV VITE_SUPABASE_URL=$VITE_SUPABASE_URL
