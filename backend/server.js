@@ -119,5 +119,10 @@ app.post('/api/verify-code', async (req, res) => {
   }
 })
 
+// Health endpoint for orchestration checks
+app.get('/health', (req, res) => {
+  return res.json({ ok: true, service: 'backend', timestamp: new Date().toISOString() })
+})
+
 const port = process.env.PORT || 4000
 app.listen(port, () => console.log(`Server listening ${port}`))
